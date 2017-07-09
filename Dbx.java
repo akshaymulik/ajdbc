@@ -11,6 +11,7 @@ public class Dbx implements SerialPortEventListener
 	private OutputStream output;/** The output stream to the port */
 	private static final int TIME_OUT = 2000;/** Milliseconds to block while waiting for port open */
 	private static final int DATA_RATE = 9600;/** Default bits per second for COM port.AKA-Baud-RAte */
+  ajdbc k1=new ajdbc();//define object for ajdbc
 	public void initialize(){
     System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
 		CommPortIdentifier portId = null;
@@ -48,9 +49,9 @@ public class Dbx implements SerialPortEventListener
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				String inputLine=input.readLine();
-				//System.out.println("Hello "+inputLine);
-        if(ajdbc.ajs(inputLine))
-        {System.out.println("Sucessfull");}
+				System.out.println("Hello "+inputLine);
+        if(k1.ajs(inputLine))
+        {System.out.println("Updated");}
         else{System.out.println("Failed");}
         //send-data-to-dbfunction
 			} catch (Exception e) {
